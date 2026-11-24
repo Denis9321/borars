@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Вспомни составы · ЛЧ 2014</title>
+<style>
+html,body{height:100%}
+body{margin:0;background:#05070f;overflow:hidden}
+#uclg{--jw:28px;--jh:24px;--line:rgba(255,255,255,.72);--mint:#3df2a6;--blue:#2bd4ff;
+max-width:740px;width:100%;height:100%;margin:0 auto;position:relative;overflow:hidden;
+display:flex;flex-direction:column;box-sizing:border-box;
+font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#e8ecf8;
+background:linear-gradient(180deg,#0a1030,#060a1c);border:1px solid #1c2547;border-radius:14px;padding:12px 14px 12px}
+#uclg,#uclg *{box-sizing:border-box}
+#uclg svg{max-width:none}
+.u-hd{flex:none;position:relative;display:flex;align-items:center;justify-content:center;padding:0 58px;margin-bottom:9px;min-height:34px}
+.u-tt{flex:1;min-width:0;text-align:center}
+.u-tt b{display:block;font-size:14px;letter-spacing:.4px;text-transform:uppercase;line-height:1.15}
+.u-tt span{display:block;font-size:10px;color:#8b93b8;margin-top:2px}
+.u-chip{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:13px;font-weight:700;color:var(--mint);background:#0d1434;border:1px solid #232e5c;border-radius:8px;padding:5px 9px;font-variant-numeric:tabular-nums}
+.u-chip.warn{color:#ffb020;border-color:#5a4a1e}
+.u-chip.bad{color:#ff5c6c;border-color:#5a2430;animation:utp 1s ease-in-out infinite}
+@keyframes utp{50%{opacity:.55}}
+.u-bar{flex:none;display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.6px;margin:0 2px 6px}
+.u-bar i{font-style:normal;color:#8b93b8;font-weight:600;margin-left:6px}
+.u-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.u-stad{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;position:relative;overflow:hidden;border-radius:14px;background:#071026;border:1px solid #1d2749;padding:12px 10px}
+.u-stad::before,.u-stad::after{content:'';position:absolute;left:10px;right:10px;height:5px;border-radius:3px;opacity:.55;
+background:repeating-linear-gradient(90deg,rgba(61,242,166,.45) 0 12px,rgba(43,212,255,.3) 12px 16px,transparent 16px 26px)}
+.u-stad::before{top:3px}.u-stad::after{bottom:3px}
+.u-pitch{flex:1 1 auto;min-height:0;position:relative;display:grid;grid-template-columns:repeat(10,1fr);
+grid-template-rows:repeat(4,minmax(30px,84px));align-content:center;gap:4px 3px;
+padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;
+background:radial-gradient(140px 70px at 10% -12%,rgba(255,255,255,.16),transparent 70%),
+radial-gradient(140px 70px at 90% -12%,rgba(255,255,255,.16),transparent 70%),
+repeating-linear-gradient(90deg,#0d7a40 0 10%,#0f8547 10% 20%)}
+.u-pitch::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1.5px;margin-left:-.75px;background:var(--line);z-index:1}
+.u-pitch::after{content:'';position:absolute;left:50%;top:50%;width:76px;height:76px;transform:translate(-50%,-50%);border:1.5px solid var(--line);border-radius:50%;z-index:1}
+.u-ln{position:absolute;border:1.5px solid var(--line);pointer-events:none;z-index:1}
+.u-cs{left:50%;top:50%;width:4px;height:4px;margin:-2px;border:0;border-radius:50%;background:var(--line)}
+.u-pa{top:50%;transform:translateY(-50%);height:64%;width:12%}
+.u-pa.l{left:-1.5px;border-left:0}.u-pa.r{right:-1.5px;border-right:0}
+.u-ga{top:50%;transform:translateY(-50%);height:32%;width:5%}
+.u-ga.l{left:-1.5px;border-left:0}.u-ga.r{right:-1.5px;border-right:0}
+.u-ps{top:50%;width:3px;height:3px;margin-top:-1.5px;border:0;border-radius:50%;background:var(--line)}
+.u-ps.l{left:8%}.u-ps.r{right:8%}
+.u-ar{top:50%;transform:translateY(-50%);width:24px;height:50px}
+.u-ar.l{left:12%;border-left:0;border-radius:0 50px 50px 0}
+.u-ar.r{right:12%;border-right:0;border-radius:50px 0 0 50px}
+.u-gl{top:50%;transform:translateY(-50%);width:6px;height:18%;background:rgba(255,255,255,.3)}
+.u-gl.l{left:-8px;border-right:0}.u-gl.r{right:-8px;border-left:0}
+.u-cn{width:10px;height:10px}
+.u-cn.tl{left:-1.5px;top:-1.5px;border-left:0;border-top:0;border-radius:0 0 10px 0}
+.u-cn.tr{right:-1.5px;top:-1.5px;border-right:0;border-top:0;border-radius:0 0 0 10px}
+.u-cn.bl{left:-1.5px;bottom:-1.5px;border-left:0;border-bottom:0;border-radius:0 10px 0 0}
+.u-cn.br{right:-1.5px;bottom:-1.5px;border-right:0;border-bottom:0;border-radius:10px 0 0 0}
+.u-card{position:relative;border:0;padding:0;background:none;cursor:pointer;perspective:420px;z-index:2}
+.u-card:focus{outline:none}
+.u-card:focus-visible .u-fr{border-color:var(--mint)}
+.u-flip{position:absolute;inset:1px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.7,.3,1.15)}
+.u-card.open .u-flip{transform:rotateY(180deg)}
+.u-card:not(.open):hover .u-fr{border-color:var(--tc);transform:translateY(-2px)}
+.u-f{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:8px;
+display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;transition:transform .15s,border-color .15s}
+.u-fr{background:rgba(7,12,30,.88);border:1px solid rgba(255,255,255,.16)}
+.u-bk{transform:rotateY(180deg);background:linear-gradient(180deg,#0d1638,#0a102c);border:1.5px solid var(--tc);box-shadow:0 0 12px -5px var(--tc)}
+.u-num{font-size:10px;font-weight:800;color:var(--tc);line-height:1;font-style:normal}
+.u-nm{font-size:9px;font-weight:700;line-height:1.12;text-align:center;padding:0 2px;overflow-wrap:anywhere;color:#fff;font-style:normal}
+.u-card.open .u-bk{animation:upop .5s .35s}
+@keyframes upop{0%{box-shadow:0 0 0 0 var(--tc)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 12px -5px var(--tc)}}
+.u-card.miss .u-bk{border-color:#5a648c;box-shadow:none;animation:none}
+.u-card.miss .u-nm{color:#aab3d0}
+.u-card.miss .u-num{color:#8b93b8}
+#uclg.hint .u-card:not(.open) .u-fr{border-color:var(--mint);animation:uhp 1s ease-in-out infinite}
+@keyframes uhp{50%{box-shadow:0 0 0 3px rgba(61,242,166,.3)}}
+.u-in{flex:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.u-in input{width:100%;background:#0d1434;border:1px solid #232e5c;border-left:3px solid var(--tc);color:#fff;border-radius:8px;padding:9px 10px;font-size:13px;outline:none;font-family:inherit}
+.u-in input:focus{border-color:var(--tc)}
+.u-in input::placeholder{color:#69719a}
+.u-in input:disabled{opacity:.55}
+.u-in input.ok{animation:uok .6s}
+@keyframes uok{0%{border-color:var(--mint);box-shadow:0 0 0 3px rgba(61,242,166,.25)}100%{box-shadow:none}}
+.u-in input.dup{animation:udup .3s}
+@keyframes udup{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.u-hint{flex:none;font-size:10.5px;color:#8b93b8;margin:7px 2px 0}
+.u-hint.on{color:var(--mint);font-weight:600}
+.u-ft{flex:none;display:flex;align-items:center;gap:8px;margin-top:9px}
+.u-track{flex:1;height:6px;background:#131b3f;border-radius:3px;overflow:hidden}
+.u-fill{height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--blue));border-radius:3px;transition:width .4s}
+.u-pc{font-size:11px;font-weight:700;color:var(--mint);font-variant-numeric:tabular-nums}
+.u-btn{background:#0d1434;border:1px solid #232e5c;color:#cdd4ee;border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.u-btn:hover{border-color:var(--mint);color:var(--mint)}
+.u-btn:disabled{opacity:.45;cursor:default;border-color:#232e5c;color:#69719a}
+.u-btn.arm{border-color:var(--mint);color:var(--mint)}
+.u-ov{position:absolute;inset:0;background:rgba(4,7,18,.9);backdrop-filter:blur(4px);display:none;place-items:center;z-index:5;text-align:center}
+#uclg.done .u-ov{display:grid}
+.u-ov h2{margin:0 0 4px;font-size:20px;letter-spacing:.5px}
+.u-big{font-size:34px;font-weight:800;color:var(--mint);font-variant-numeric:tabular-nums}
+.u-big.loss{color:#ff5c6c}
+.u-ov p{margin:6px 0 14px;font-size:12px;color:#8b93b8}
+.u-ovb{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.u-cta{background:var(--mint);border:0;color:#04121c;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit}
+.u-st{position:absolute;color:var(--mint);pointer-events:none;animation:ufl 3s ease-in-out infinite}
+@keyframes ufl{50%{transform:translateY(-6px);opacity:.9}}
+.u-spin{animation:usp 40s linear infinite}
+@keyframes usp{to{transform:rotate(360deg)}}
+@media(max-width:620px){
+#uclg{--jw:20px;--jh:17px;padding:10px}
+.u-hd{padding:0 50px}
+.u-chip{font-size:12px;padding:4px 7px}
+.u-pitch{gap:3px 2px;padding:8px 9px}
+.u-pitch::after{width:54px;height:54px}
+.u-ar{width:16px;height:34px}
+.u-num{font-size:8px}.u-nm{font-size:7px}
+.u-tt b{font-size:12px}.u-tt span{font-size:9px}
+.u-in input{font-size:12px;padding:8px}
+.u-big{font-size:28px}
+.u-ft{gap:6px}.u-btn{padding:5px 8px;font-size:10.5px}}
+@media(max-width:400px){.u-nm{font-size:6.5px}}
+@media(max-height:460px){
+#uclg{--jw:20px;--jh:17px;padding:8px 12px}
+.u-hd{min-height:26px;margin-bottom:6px}
+.u-tt span{display:none}
+.u-hint{display:none}
+.u-in{margin-top:6px}
+.u-in input{padding:7px 9px;font-size:12px}
+.u-ft{margin-top:6px}
+.u-stad{padding:8px}
+.u-pitch{padding:6px 8px;gap:3px 2px}
+.u-num{font-size:8px}.u-nm{font-size:7px}}
+@media(max-height:360px){
+#uclg{--jw:16px;--jh:13px;padding:6px 10px}
+.u-tt b{font-size:11px}
+.u-chip{font-size:11px;padding:3px 6px}
+.u-bar{font-size:9px;margin-bottom:4px}
+.u-in input{padding:5px 8px;font-size:11px}
+.u-ft{gap:6px;margin-top:5px}
+.u-btn{padding:4px 7px;font-size:10px}
+.u-track{height:4px}
+.u-num{font-size:7px}.u-nm{font-size:6px}
+.u-pitch::after{width:44px;height:44px}
+.u-ar{width:12px;height:26px}}
+</style>
+</head>
+<body>
+<svg style="width:0!important;height:0!important;position:absolute" aria-hidden="true"><defs>
+<symbol id="jA" viewBox="0 0 40 32"><path d="M14 4 20 6.5 26 4 28 7 28 29 12 29 12 7Z" fill="#e8394a"/><path d="M14 4 6 9 9 15 12 12 12 7Z" fill="#fff"/><path d="M26 4 34 9 31 15 28 12 28 7Z" fill="#fff"/></symbol>
+<symbol id="jB" viewBox="0 0 40 32"><path d="M14 4 20 6.5 26 4 28 7 28 29 12 29 12 7Z" fill="#fde100"/><path d="M14 4 6 9 9 15 12 12 12 7Z" fill="#17181d"/><path d="M26 4 34 9 31 15 28 12 28 7Z" fill="#17181d"/></symbol>
+<symbol id="jAg" viewBox="0 0 40 32"><path d="M14 4 20 6.5 26 4 28 7 28 29 12 29 12 7Z" fill="#1fb56b"/><path d="M14 4 6 9 9 15 12 12 12 7Z" fill="#128a50"/><path d="M26 4 34 9 31 15 28 12 28 7Z" fill="#128a50"/></symbol>
+<symbol id="jBg" viewBox="0 0 40 32"><path d="M14 4 20 6.5 26 4 28 7 28 29 12 29 12 7Z" fill="#4a5468"/><path d="M14 4 6 9 9 15 12 12 12 7Z" fill="#2e3546"/><path d="M26 4 34 9 31 15 28 12 28 7Z" fill="#2e3546"/></symbol>
+<symbol id="ustar" viewBox="-32 -32 64 64"><g fill="#3df2a6"><path id="sp" d="M0-6 1.8-1.8 6-1.5 2.9 1.2 3.7 5.4 0 3-3.7 5.4-2.9 1.2-6-1.5-1.8-1.8Z" transform="translate(0,-24)"/><use href="#sp" transform="rotate(45)"/><use href="#sp" transform="rotate(90)"/><use href="#sp" transform="rotate(135)"/><use href="#sp" transform="rotate(180)"/><use href="#sp" transform="rotate(225)"/><use href="#sp" transform="rotate(270)"/><use href="#sp" transform="rotate(315)"/></g></symbol>
+</defs></svg>
+
+<div id="uclg">
+<div class="u-hd">
+<div class="u-tt"><b>Вспомни стартовые составы</b><span>Лига чемпионов · 26.11.2014 · группа D · Дортмунд</span></div>
+<div class="u-chip" id="utm">10:00</div>
+</div>
+<div class="u-bar">
+<span><span class="u-dot" style="background:#ff4b5c"></span>АРСЕНАЛ<i id="uc-ars">0/11</i></span>
+<span><i id="uc-bvb" style="margin:0 6px 0 0">0/11</i>БОРУССИЯ Д<span class="u-dot" style="background:#ffd400;margin:0 0 0 6px"></span></span>
+</div>
+<div class="u-stad">
+<svg class="u-spin" style="width:90px!important;height:90px!important;position:absolute;right:-20px;top:-20px;opacity:.1" aria-hidden="true"><use href="#ustar"/></svg>
+<div class="u-pitch" id="up">
+<div class="u-ln u-cs"></div>
+<div class="u-ln u-pa l"></div><div class="u-ln u-pa r"></div>
+<div class="u-ln u-ga l"></div><div class="u-ln u-ga r"></div>
+<div class="u-ln u-ps l"></div><div class="u-ln u-ps r"></div>
+<div class="u-ln u-ar l"></div><div class="u-ln u-ar r"></div>
+<div class="u-ln u-gl l"></div><div class="u-ln u-gl r"></div>
+<div class="u-ln u-cn tl"></div><div class="u-ln u-cn tr"></div><div class="u-ln u-cn bl"></div><div class="u-ln u-cn br"></div>
+</div>
+</div>
+<div class="u-in">
+<input id="ui-ars" style="--tc:#ff4b5c" placeholder="Фамилия игрока «Арсенала»…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Фамилия игрока Арсенала">
+<input id="ui-bvb" style="--tc:#ffd400" placeholder="Фамилия игрока «Боруссии»…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Фамилия игрока Боруссии">
+</div>
+<div class="u-hint" id="uhintline">Вводи фамилию — карточка откроется сама</div>
+<div class="u-ft">
+<div class="u-track"><div class="u-fill" id="uf"></div></div>
+<span class="u-pc" id="upc">0/22</span>
+<button class="u-btn" id="uhint">💡 Подсказка</button>
+<button class="u-btn" id="urst">↺ Заново</button>
+</div>
+<div class="u-ov">
+<svg class="u-spin" style="width:220px!important;height:220px!important;position:absolute;left:50%;top:50%;margin:-110px 0 0 -110px;opacity:.08" aria-hidden="true"><use href="#ustar"/></svg>
+<span class="u-st" style="left:12%;top:18%;font-size:18px">✦</span>
+<span class="u-st" style="right:14%;top:26%;font-size:12px;animation-delay:.6s">✦</span>
+<span class="u-st" style="left:20%;bottom:20%;font-size:12px;animation-delay:1.2s">✦</span>
+<span class="u-st" style="right:18%;bottom:16%;font-size:20px;animation-delay:.3s">✦</span>
+<div style="position:relative;padding:0 14px">
+<h2 id="uovh">Составы собраны!</h2>
+<div class="u-big" id="uftime">0:00</div>
+<p id="uovp">Боруссия Дортмунд 2:0 Арсенал · 26 ноября 2014</p>
+<div class="u-ovb">
+<button class="u-cta" id="ucp">Скопировать результат</button>
+<button class="u-btn" id="ushow" style="display:none">Показать составы</button>
+<button class="u-btn" id="urst2">Сыграть ещё раз</button>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+var LIMIT=600000;
+var T=[
+{id:'ars',c:'#ff4b5c',j:'jA',g:'jAg',ph:'Арсенала',p:[
+[26,'Мартинес','2/4',1,1,'мартинес мартинез martinez'],
+[3,'Гиббс',1,2,0,'гиббс гибс gibbs'],
+[4,'Мертезакер',2,2,0,'мертезакер мертезаккер мертесакер мертесаккер mertesacker'],
+[21,'Чемберс',3,2,0,'чемберс чамберс chambers'],
+[18,'Монреаль',4,2,0,'монреаль монреал monreal'],
+[8,'Артета',2,3,0,'артета arteta'],
+[16,'Рэмзи',3,3,0,'рэмзи рамзи рэмси рамси ramsey'],
+[17,'Санчес',1,4,0,'санчес санчез sanchez'],
+[19,'Касорла','2/4',4,0,'касорла казорла cazorla'],
+[15,'Окслейд-Чемберлен',4,4,0,'окслейдчемберлен окслейд чемберлен окслейдчемберлин oxlade oxladechamberlain chamberlain'],
+[22,'Саного','2/4',5,0,'саного sanogo']]},
+{id:'bvb',c:'#ffd400',j:'jB',g:'jBg',ph:'Боруссии',p:[
+[9,'Иммобиле','2/4',6,0,'иммобиле имобиле immobile'],
+[10,'Мхитарян',1,7,0,'мхитарян mkhitaryan'],
+[17,'Обамеянг','2/4',7,0,'обамеянг абамеянг aubameyang'],
+[19,'Гросскройц',4,7,0,'гросскройц гроскройц гросскройтц grosskreutz groskreutz'],
+[8,'Гюндоган',2,8,0,'гюндоган гундоган gundogan'],
+[6,'Бендер',3,8,0,'бендер bender'],
+[26,'Пищек',1,9,0,'пищек пящек piszczek'],
+[4,'Суботич',2,9,0,'суботич subotic'],
+[28,'Гинтер',3,9,0,'гинтер ginter'],
+[29,'Шмельцер',4,9,0,'шмельцер шмелцер schmelzer'],
+[1,'Вайденфеллер','2/4',10,1,'вайденфеллер вайденфелер weidenfeller']]}];
+var pitch=document.getElementById('up'),root=document.getElementById('uclg'),
+fill=document.getElementById('uf'),pc=document.getElementById('upc'),tm=document.getElementById('utm'),
+hintBtn=document.getElementById('uhint'),hintLine=document.getElementById('uhintline'),
+ovh=document.getElementById('uovh'),ovbig=document.getElementById('uftime'),ovp=document.getElementById('uovp'),
+showBtn=document.getElementById('ushow'),copyBtn=document.getElementById('ucp'),
+inputs={ars:document.getElementById('ui-ars'),bvb:document.getElementById('ui-bvb')},
+cnt={ars:0,bvb:0},t0=0,left=LIMIT,tick=null,started=false,over=false,won=false,hintUsed=false,hintMode=false;
+function norm(s){return s.toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я]/g,'')}
+function fmt(ms){var s=Math.max(0,Math.floor(ms/1000));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+function start(){if(started||over)return;started=true;t0=Date.now();
+tick=setInterval(function(){
+left=Math.max(0,LIMIT-(Date.now()-t0));tm.textContent=fmt(left);
+tm.classList.toggle('warn',left<=60000&&left>20000);
+tm.classList.toggle('bad',left<=20000);
+if(left<=0)timeUp();
+},250)}
+function setHintMode(on){
+hintMode=on;root.classList.toggle('hint',on);hintBtn.classList.toggle('arm',on);
+hintBtn.textContent=on?'✕ Отмена':'💡 Подсказка';
+hintLine.textContent=on?'Кликни по любой закрытой карточке — она откроется':'Вводи фамилию — карточка откроется сама';
+hintLine.classList.toggle('on',on);
+}
+hintBtn.addEventListener('click',function(){
+if(hintUsed||over)return;
+start();setHintMode(!hintMode);
+});
+T.forEach(function(team){team.p.forEach(function(p){
+var el=document.createElement('button');el.className='u-card';el.type='button';
+el.style.cssText='--tc:'+team.c+';grid-row:'+p[2]+';grid-column:'+p[3];
+el.setAttribute('aria-label','Скрытый игрок, номер '+p[0]);
+el.innerHTML='<span class="u-flip"><span class="u-f u-fr"><b class="u-num">'+p[0]+'</b><svg style="width:var(--jw)!important;height:var(--jh)!important;display:block"><use href="#'+(p[4]?team.g:team.j)+'"/></svg></span><span class="u-f u-bk"><b class="u-num">'+p[0]+'</b><i class="u-nm">'+p[1]+'</i></span></span>';
+el.addEventListener('click',function(){
+if(el.classList.contains('open')||over)return;
+if(hintMode){
+reveal(p);hintUsed=true;setHintMode(false);
+hintBtn.disabled=true;hintBtn.textContent='Подсказка использована';
+}else inputs[team.id].focus();
+});
+pitch.appendChild(el);
+p.push(el,false,team.id,p[5].split(' '));
+})});
+function lock(){
+inputs.ars.disabled=true;inputs.bvb.disabled=true;
+hintBtn.disabled=true;setHintMode(false);
+if(!hintUsed)hintBtn.textContent='💡 Подсказка';
+}
+function reveal(p){
+if(over||p[7])return;
+p[7]=true;p[6].classList.add('open');cnt[p[8]]++;
+document.getElementById('uc-'+p[8]).textContent=cnt[p[8]]+'/11';
+var tot=cnt.ars+cnt.bvb;pc.textContent=tot+'/22';fill.style.width=(tot/22*100)+'%';
+if(cnt[p[8]]===11){inputs[p[8]].disabled=true;inputs[p[8]].value='';inputs[p[8]].placeholder='Состав собран ✓'}
+if(tot===22){
+won=true;over=true;clearInterval(tick);lock();
+var f=fmt(LIMIT-left);tm.textContent=fmt(left);
+ovh.textContent='Составы собраны!';ovbig.textContent=f;ovbig.classList.remove('loss');
+ovp.textContent='Боруссия Дортмунд 2:0 Арсенал · 26 ноября 2014';
+showBtn.style.display='none';copyBtn.textContent='Скопировать результат';
+setTimeout(function(){root.classList.add('done')},700);
+}
+}
+function timeUp(){
+if(over)return;
+over=true;clearInterval(tick);left=0;tm.textContent='0:00';tm.classList.remove('warn');tm.classList.add('bad');
+lock();
+var tot=cnt.ars+cnt.bvb;
+ovh.textContent='Время вышло';ovbig.textContent=tot+'/22';ovbig.classList.add('loss');
+ovp.textContent='Боруссия Дортмунд 2:0 Арсенал · 26 ноября 2014';
+showBtn.style.display='';copyBtn.textContent='Скопировать результат';
+setTimeout(function(){root.classList.add('done')},400);
+}
+showBtn.addEventListener('click',function(){
+T.forEach(function(t){t.p.forEach(function(p){
+if(!p[7]){p[7]=true;p[6].classList.add('open','miss')}
+})});
+root.classList.remove('done');
+hintLine.textContent='Время вышло — составы показаны полностью';hintLine.classList.remove('on');
+});
+function check(teamId,inp){
+if(over)return;
+var v=norm(inp.value);if(!v)return;start();
+var own=null,other=null,dup=false;
+T.forEach(function(team){team.p.forEach(function(p){
+if(p[9].indexOf(v)<0)return;
+if(p[7]){dup=true;return}
+if(team.id===teamId)own=p;else other=other||p;
+})});
+var hit=own||other;
+if(hit){reveal(hit);inp.value='';inp.classList.remove('ok');void inp.offsetWidth;inp.classList.add('ok')}
+else if(dup){inp.classList.remove('dup');void inp.offsetWidth;inp.classList.add('dup');inp.value=''}
+}
+Object.keys(inputs).forEach(function(id){inputs[id].addEventListener('input',function(){check(id,this)})});
+function reset(){
+clearInterval(tick);started=false;over=false;won=false;left=LIMIT;
+tm.textContent='10:00';tm.classList.remove('warn','bad');
+cnt={ars:0,bvb:0};pc.textContent='0/22';fill.style.width='0';root.classList.remove('done');
+hintUsed=false;setHintMode(false);hintBtn.disabled=false;hintBtn.textContent='💡 Подсказка';
+hintLine.textContent='Вводи фамилию — карточка откроется сама';hintLine.classList.remove('on');
+ovbig.classList.remove('loss');showBtn.style.display='none';
+T.forEach(function(t){t.p.forEach(function(p){p[7]=false;p[6].classList.remove('open','miss')});
+document.getElementById('uc-'+t.id).textContent='0/11';
+inputs[t.id].disabled=false;inputs[t.id].value='';
+inputs[t.id].placeholder='Фамилия игрока «'+t.ph+'»…'});
+}
+document.getElementById('urst').addEventListener('click',reset);
+document.getElementById('urst2').addEventListener('click',reset);
+copyBtn.addEventListener('click',function(){
+var b=this,tot=cnt.ars+cnt.bvb,
+txt=won
+?'⚽ Лига чемпионов · 26.11.2014\nБоруссия Дортмунд — Арсенал: угадал все 22 игрока за '+fmt(LIMIT-left)+'\n🟡 11/11 · 🔴 11/11\nТрибуна · спортс'
+:'⚽ Лига чемпионов · 26.11.2014\nБоруссия Дортмунд — Арсенал: открыл '+tot+'/22 за 10:00\n🟡 '+cnt.bvb+'/11 · 🔴 '+cnt.ars+'/11\nТрибуна · спортс';
+function ok(){b.textContent='Скопировано ✓';setTimeout(function(){b.textContent='Скопировать результат'},2000)}
+function fb(){var ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(ta)}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fb)}else fb();
+});
+})();
+</script>
+</body>
+</html>
